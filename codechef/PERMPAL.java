@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public class PERMPAL {
 	public static void go(String str) {
@@ -8,10 +9,9 @@ public class PERMPAL {
 			string.add(str.charAt(i));
 			indexes.add(i);
 		}
-		ArrayList <Integer> firstHalf = new ArrayList <Integer>();
-		ArrayList <Integer> secondHalf = new ArrayList <Integer>();
-		/*StringBuilder firstHalf = new StringBuilder("");
-		StringBuilder secondHalf = new StringBuilder("");*/
+		ArrayList <Integer> firstHalf = new ArrayList <Integer>(str.length()/2);
+		ArrayList <Integer> secondHalf = new ArrayList <Integer>(str.length()/2);
+
 		int aloneCharacters = 0;
 		Character aloneCharacter = ' ';
 		int aloneCharacterIndex = -1;
@@ -35,27 +35,15 @@ public class PERMPAL {
 			int searchIndex = indexes.get(search);
 			indexes.remove(search);
 			firstHalf.add(indexRemoved);
-			//firstHalf.append(indexRemoved+1 + " ");
 			secondHalf.add(searchIndex);
-			//secondHalf.append(searchIndex+1 + " ");
 		}
-		//secondHalf.reverse();
-		//secondHalf.deleteCharAt(0);
+
 		Collections.reverse(secondHalf);
-		/*System.out.println(string);
-		System.out.println(firstHalf);
-		System.out.println(aloneCharacterIndex);
-		System.out.println(secondHalf);*/
 		StringBuilder output = new StringBuilder("");
 		for (Integer i : firstHalf) output.append(Integer.toString(i+1) + " ");
 		if (aloneCharacterIndex != -1) output.append(Integer.toString(aloneCharacterIndex+1) + " ");
 		for (Integer i : secondHalf) output.append(Integer.toString(i+1) + " ");
-		//for (int i = secondHalf.size()-1; i >=0 ; i--) output.append(Integer.toString(secondHalf.get(i)+1)+" ");
 		System.out.println(output);
-		/*System.out.print(firstHalf);
-		if (aloneCharacterIndex != -1) System.out.print(aloneCharacterIndex+1+" ");
-		System.out.print(secondHalf);
-		System.out.println();*/
 	}
 	public static void main(String [] args) {
 		Scanner input = new Scanner(System.in);
@@ -63,6 +51,50 @@ public class PERMPAL {
 		while (T-- > 0) {
 			String str = input.next();
 			go(str);
-		} 
+		}
+	}
+
+	public static PrintWriter out;
+
+	public static class MyScanner {
+		BufferedReader br;
+		StringTokenizer st;
+
+		public MyScanner() {
+			br = new BufferedReader(new InputStreamReader(System.in));
+		}
+
+		String next() {
+			while (st == null || !st.hasMoreElements()) {
+				try {
+					st = new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			return st.nextToken();
+		}
+
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+
+		long nextLong() {
+			return Long.parseLong(next());
+		}
+
+		double nextDouble() {
+			return Double.parseDouble(next());
+		}
+
+		String nextLine() {
+			String str = "";
+			try {
+				str = br.readLine();
+			} catch (IOException e){
+				e.printStackTrace();
+			}
+			return str;
+		}
 	}
 }
