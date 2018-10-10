@@ -1,7 +1,7 @@
 import java.math.BigInteger;
 import java.util.Scanner;
 
-class FCTRL2 {
+public class FCTRL2 {
     public static void main(String[] args) {
 	Scanner sc = new Scanner(System.in);
 	int t = sc.nextInt();
