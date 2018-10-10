@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int INTEST()
+int main()
 {
     int sum = 0, n, k, curr;
     cin >> n;
