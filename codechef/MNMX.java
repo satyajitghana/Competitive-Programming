@@ -1,5 +1,5 @@
 import java.util.*;
-class Codechef
+public class MNMX
 {
 	public static void main (String[] args) throws java.lang.Exception
 	{
