@@ -1,8 +1,10 @@
-import java.io.*;
+/*
+Question
+https://www.hackerrank.com/challenges/divisible-sum-pairs/problem
+ */
+
 import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
+
 
 public class divisibleSum {
 
