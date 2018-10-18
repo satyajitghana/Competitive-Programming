@@ -7,3 +7,4 @@ Contains solutions to
 - Codeforces
 - ProjectEuler
 - FacebookHackerCup
+- GoogleCodeJam
