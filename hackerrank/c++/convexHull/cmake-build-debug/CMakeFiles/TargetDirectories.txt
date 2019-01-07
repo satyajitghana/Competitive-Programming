@@ -1,3 +1,0 @@
-/mnt/d/GitHub-Repositories/DEBUG/hackerrank/c++/convexHull/cmake-build-debug/CMakeFiles/edit_cache.dir
-/mnt/d/GitHub-Repositories/DEBUG/hackerrank/c++/convexHull/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/mnt/d/GitHub-Repositories/DEBUG/hackerrank/c++/convexHull/cmake-build-debug/CMakeFiles/convexHull.dir
