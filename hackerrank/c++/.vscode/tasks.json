@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build convex-hull",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g", "convex-hull.cpp"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
