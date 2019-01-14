@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - MGAME",
+            "request": "launch",
+            "mainClass": "MGAME"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - DPAIRS",
+            "request": "launch",
+            "mainClass": "DPAIRS"
+        }
+    ]
+}
