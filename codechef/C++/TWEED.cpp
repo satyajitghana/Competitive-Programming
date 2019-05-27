@@ -51,5 +51,26 @@ int A[MAXN];
 int main() {
     fastio;
 
+    int T;
+    cin >> T;
+    while (T--) {
+        int N;
+        cin >> N;
+
+        string start;
+        cin >> start;
+
+        fori(i, 0, N) {
+            cin >> A[i];
+        }
+
+        if (start == "Dee" and N == 1 and A[0] % 2 == 0) {
+            cout << "Dee" << endl;
+        } else {
+            cout << "Dum" << endl;
+        }
+
+    }
+
     return 0;
 }

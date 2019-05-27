@@ -7,19 +7,19 @@
 #include <iostream>
 #include <string>
 #include <regex>
-#include <cmath>
 
 /* Define Macros */
 
-#define MOD 1e9+7
+#define MOD (int)(1e9+7)
 #define precision 1e2
 #define pb push_back
-#define pop pop_back
+// #define pop pop_back
 #define mp make_pair
 #define pint cpp_int
 #define pint_pair pair<pint, pint>
 #define pfloat cpp_dec_float<precision>
 #define lld long long int
+#define llf long double
 #define CLR(_a, _init) memset(_a, _init, sizeof(_a))
 #define ODD(_num) (((_num)&1)==0?(0):(1))
 #define MAXN (lld)(1e6+5)
@@ -47,9 +47,60 @@ template<typename T> inline void print_arr(T arr[], int len) { fori(i, 0, len) {
 /* Let the Games Begin */
 
 int A[MAXN];
+pint MIN[MAXN];
+llf DP[MAXN];
 
 int main() {
     fastio;
+
+    int N, K;
+
+    cin >> N >> K;
+
+    fori (i, 0, N) {
+        cin >> A[i];
+    }
+
+    priority_queue <pair<llf, int > > pq;
+
+    DP[0] = log(A[0]);
+    MIN[0] = A[0];
+    // priority queue sorts is descending order, we need the smallest value, hence the negative, 0 here is the index
+    pq.push({-DP[0], 0});
+
+    for (int i = 1 ; i < N ; i++) {
+        while (i - pq.top().second > K) {
+            pq.pop();
+        }
+
+        DP[i] = DP[pq.top().second] + log(A[i]);
+        MIN[i] = (MIN[pq.top().second] * A[i]) % MOD;
+        pq.push({-DP[i], i});
+    }
+
+
+    /* solution for N <= 80
+
+    for (int i = 1 ; i < N ; i++) {
+        pint minimum = MIN[i-1];
+        // int min_i = 0;
+        for (int j = i - 2; ((i - j) <= K) && (j >= 0) ; j--) {
+            // if (DP[j] < minimum) {
+            //     minimum = DP[j];
+            //     min_i = j;
+            // }
+            minimum = min(minimum, MIN[j]);
+            // cout << "(" << i << ", " << j << ")" << " ";
+        }
+        // watch(minimum);
+        // MIN[i] = (MIN[min_i] * A[i]) % MOD;
+        // DP[i] = DP[min_i] + log(A[i]);
+        // cout << endl;
+
+        MIN[i] = minimum * A[i];
+    } */
+
+    cout << MIN[N-1] % MOD << endl;
 
     return 0;
 }

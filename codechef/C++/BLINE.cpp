@@ -7,11 +7,10 @@
 #include <iostream>
 #include <string>
 #include <regex>
-#include <cmath>
 
 /* Define Macros */
 
-#define MOD 1e9+7
+#define mod 1e9+7
 #define precision 1e2
 #define pb push_back
 #define pop pop_back
@@ -22,7 +21,7 @@
 #define lld long long int
 #define CLR(_a, _init) memset(_a, _init, sizeof(_a))
 #define ODD(_num) (((_num)&1)==0?(0):(1))
-#define MAXN (lld)(1e6+5)
+#define MAX (lld)(1e6+5)
 #define fastio ios_base::sync_with_stdio(false); std::cin.tie(NULL); std::cout.tie(NULL)
 #define print_pairs(_pairs) for (auto _e : _pairs) { cout << _e.first << " " << _e.second << endl; }
 #define fori(_ii, _begin, _end) for (lld _ii = _begin ; _ii < _end ; _ii++)
@@ -46,10 +45,90 @@ template<typename T> inline void print_arr(T arr[], int len) { fori(i, 0, len) {
 
 /* Let the Games Begin */
 
-int A[MAXN];
+int A[MAX];
+
+pint query(pint l, pint r) {
+    cout << 1 << " " << l << " " << r << endl;
+
+    fflush(stdout);
+    pint res;
+    cin >> res;
+
+    return res;
+}
+
+pint search(pint left, pint right, pint from) {
+    pint ans = LLONG_MAX;
+    while (left <= right) {
+        pint mid = (left + right) / 2;
+        pint res = query(from, mid);
+        if (res > 0) {
+            right = mid - 1;
+            ans = min(ans, mid);
+            // watch(ans);
+        } else {
+            left = mid + 1;
+        }
+    }
+
+    return ans;
+}
 
 int main() {
     fastio;
+
+    pint N;
+    cin >> N;
+
+    pint l1, r1, l2, r2, left, right, mid, res;
+    l1 = r1 = l2 = r2 = LLONG_MAX;
+
+    left = 1; right = N;
+	while (left <= right) {
+	    mid = (left+right)/2;
+	    if (query(1, mid) < 2) {
+            left = mid+1;
+	    } else {
+            right = mid-1;
+            l2 = min(l2, mid);
+	    }
+	}
+
+    r2 = left = l2; right = N;
+    while (left <= right) {
+        mid = (left+right)/2;
+        if (query(mid, N) > 0) {
+            left = mid+1;
+            r2 = max(r2, mid);
+        } else {
+            right = mid-1;
+        }
+    }
+
+    left = 1; right = l2-1;
+    while (left <= right) {
+        mid = (left+right)/2;
+        if (query(1, mid) > 0) {
+            right = mid-1;
+            l1 = min(l1, mid);
+        } else {
+            left = mid+1;
+        }
+    }
+
+    r1 = left = l1; right = l2-1;
+    while (left <= right) {
+        mid = (left+right)/2;
+        if (query(mid, l2-1) > 0) {
+            left = mid+1;
+            r1 = max(r1, mid);
+        } else {
+            right = mid-1;
+        }
+    }
+
+    cout << 2 << " " << l1 << " " << r1 << " " << l2 << " " << r2 << endl;
+    fflush(stdout); 
 
     return 0;
 }

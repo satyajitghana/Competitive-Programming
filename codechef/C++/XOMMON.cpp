@@ -7,11 +7,10 @@
 #include <iostream>
 #include <string>
 #include <regex>
-#include <cmath>
 
 /* Define Macros */
 
-#define MOD 1e9+7
+#define mod 1e9+7
 #define precision 1e2
 #define pb push_back
 #define pop pop_back
@@ -46,10 +45,41 @@ template<typename T> inline void print_arr(T arr[], int len) { fori(i, 0, len) {
 
 /* Let the Games Begin */
 
-int A[MAXN];
+pint A[MAXN];
+int DP[MAXN];
+set <pair <pint, pair <int, int> > > vals;
 
 int main() {
     fastio;
+    CLR(A, 0);
+
+    int N;
+    cin >> N;
+
+    fori(i, 0, N) {
+        cin >> A[i];
+        DP[i] = 1;
+    }
+
+    // CLR(DP, 1);
+
+    // int ans = INT_MIN;
+
+    fori(i, 0, N) {
+        fori(j, i+1, N) {
+            vals.insert({A[i] ^ A[j], {i, j} });
+        }
+    }
+
+    for (auto e: vals) {
+        int i = e.second.first, j = e.second.second;
+        DP[j] = max(DP[j], DP[i]+1);
+        // ans = max(ans, DP[j]);
+    }
+
+    auto ans = max_element(DP, DP+N);
+
+    cout << *ans << endl;
 
     return 0;
 }
