@@ -52,5 +52,19 @@ int A[MAXN];
 int main() {
     fastio;
 
+    int T;
+    cin >> T;
+
+    while (T--) {
+        int N, M, K;
+        cin >> N >> M >> K;
+
+        while (M--) {
+            char type;
+            int L, R;
+            cin >> type >> L >> R;
+        }
+    }
+
     return 0;
 }
