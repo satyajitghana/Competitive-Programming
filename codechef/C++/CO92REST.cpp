@@ -179,7 +179,7 @@ next:
         }
 
         int res = 1;
-        int C = N;
+        // int C = N;
 
         for (int i = 1; i < N ; ) {
             if (dx[i] == 0) {
@@ -195,10 +195,13 @@ next:
             int idx = -1;
 
             for (int k = i; k <= j; k++) {
-                if (A[k] != -1) idx = k;
+                if (A[k] != -1) {
+                    idx = k;
+                    break;
+                }
             }
 
-            C -= j - i + 1;
+            // C -= j - i + 1;
 
             if (idx == -1) {
                 for (int k = i; k <= j ; k++) {
@@ -213,20 +216,35 @@ next:
                     mn = min(mn, C);
                 }
 
-                if (mx-mn + 1 > K) res = 0;
+                if (mx-mn + 1 > K) {
+                    res = 0;
+                    goto stop;
+                }
                 res = (1LL * res * (K - mx + mn)) % MOD;
             } else {
                 for (int k = idx - 1; k >= i ; k--) {
                     int x = A[k+1] - dx[k];
-                    if (A[k] != -1 && A[k] != x) res = 0;
+                    if (A[k] != -1 && A[k] != x) {
+                        res = 0;
+                        goto stop;
+                    }
                     A[k] = x;
-                    if (A[k] < 1 || A[k] > K) res = 0;
+                    if (A[k] < 1 || A[k] > K) {
+                        res = 0;
+                        goto stop;
+                    }
                 }
                 for (int k = idx + 1 ; k <= j ; k++) {
                     int x = A[k-1] + dx[k-1];
-                    if (A[k] != -1 && A[k] != x) res = 0;
+                    if (A[k] != -1 && A[k] != x) {
+                        res = 0;
+                        goto stop;
+                    }
                     A[k] = x;
-                    if (A[k] < 1 || A[k] > K) res = 0;
+                    if (A[k] < 1 || A[k] > K) {
+                        res = 0;
+                        goto stop;
+                    }
                 }
             }
 
@@ -237,7 +255,7 @@ next:
         for (int i = 1; i <= N ; i++) {
             if (A[i] == -1) res = (1LL * res * K) % MOD;
         }
-
+stop:
         cout << res << endl;
         // stop_here;
 
