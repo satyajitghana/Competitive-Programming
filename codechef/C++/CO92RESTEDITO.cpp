@@ -50,6 +50,19 @@ int solve() {
 
     vector < pair <int, int> > inc = merge(in_i, out_i);
     vector < pair <int, int> > dec = merge(in_d, out_d);
+
+        for (auto e : inc) {
+            cout << e.first << " " << e.second << endl;
+        }
+
+        cout << endl;
+
+        for (auto e : dec) {
+            cout << e.first << " " << e.second << endl;
+        }
+
+        cout << endl;
+
     memset(delta, 0, sizeof delta);
 
     for(auto seg: inc) {

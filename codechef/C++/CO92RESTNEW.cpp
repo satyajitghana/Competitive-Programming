@@ -128,7 +128,7 @@ int main() {
             }
         }
 
-        // this part tested works
+        // below part tested works
 
         // create the dx array
         memset(dx, 0, sizeof(dx));
