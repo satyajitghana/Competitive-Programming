@@ -147,7 +147,7 @@ int main() {
             int start = i;
             int end = i;
 
-            while(dx[end]) ++end;
+            while(dx[end+1]) ++end;
 
             bool found_const = false;
 
