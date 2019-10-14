@@ -7,13 +7,13 @@ public class Main{
   
   int n=sc.nextInt();
   int fact=1;
-  for(int i=1;i<=n;i++)
+  for(int i=1;i<=n;i++)// To find the factorial of the number
   {
       fact=fact*i;
   }
   int sum=0;
   n=fact;
-  while(n!=0)
+  while(n!=0)//to find the sum
   {
       int r=n%10;
       sum=sum+r;
