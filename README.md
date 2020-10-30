@@ -1,4 +1,5 @@
 # Competitive Programming
+	Add the files under respective folder else create appropriate folder
 
 Contains solutions to 
 - Codechef
@@ -8,3 +9,4 @@ Contains solutions to
 - ProjectEuler
 - FacebookHackerCup
 - GoogleCodeJam
+- LeetCode
