@@ -1,0 +1,24 @@
+import java.io.*;
+import java.util.Scanner;
+public class Main{
+
+     public static void main(String []args){
+  Scanner sc=new Scanner(System.in);
+  
+  int n=sc.nextInt();
+  int fact=1;
+  for(int i=1;i<=n;i++)// To find the factorial of the number
+  {
+      fact=fact*i;
+  }
+  int sum=0;
+  n=fact;
+  while(n!=0)//to find the sum
+  {
+      int r=n%10;
+      sum=sum+r;
+      n=n/10;
+  }
+  System.out.println(sum);
+       }
+}
